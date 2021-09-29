@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 function SignUp(props) {
     //States
-    const [loginData, setLoginData] = useState({
+    const [signUpData, setSignUpData] = useState({
         userName: "",
         password: "",
         confirmPassword: ""
@@ -15,7 +15,7 @@ function SignUp(props) {
     function handleChange(e) {
         const name = e.target.name
         const value = e.target.value
-        setLoginData((PreviousValues) => {
+        setSignUpData((PreviousValues) => {
             return {
                 ...PreviousValues,
                 [name]: value
@@ -23,14 +23,14 @@ function SignUp(props) {
         })
     }
     function handleSubmit() {
-        if (!loginData.userName || !loginData.password || !loginData.confirmPassword) {
+        if (!signUpData.userName || !signUpData.password || !signUpData.confirmPassword) {
             toast.error("Please fill all required fields")
         }
-        else if (loginData.password !== loginData.confirmPassword) {
+        else if (signUpData.password !== signUpData.confirmPassword) {
             toast.error("Password and Confirm Password don't match")
         }
         else {
-            setLoginData({
+            setSignUpData({
                 userName: "",
                 password: "",
                 confirmPassword: ""
@@ -52,7 +52,7 @@ function SignUp(props) {
                 name="userName"
                 placeholder="Enter UserName"
                 maxLength={50}
-                value={loginData.userName}
+                value={signUpData.userName}
                 onChange={(e) => handleChange(e)}
             />
 
@@ -64,7 +64,7 @@ function SignUp(props) {
                 name="password"
                 placeholder="Enter Password"
                 maxLength={50}
-                value={loginData.password}
+                value={signUpData.password}
                 onChange={(e) => handleChange(e)}
             />
 
@@ -76,7 +76,7 @@ function SignUp(props) {
                 name="confirmPassword"
                 placeholder="Enter Confirm Password"
                 maxLength={50}
-                value={loginData.confirmPassword}
+                value={signUpData.confirmPassword}
                 onChange={(e) => handleChange(e)}
             />
 

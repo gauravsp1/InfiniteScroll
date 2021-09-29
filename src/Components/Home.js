@@ -10,7 +10,7 @@ function Home() {
     const [cardData, setCardData] = useState([])
     const [pageNo, setPageNo] = useState(1)
     const [loading, setLoading] = useState(false)
-console.log("cardData",cardData);
+
     //Functions
     function addNewCardData() {
         setPageNo((PreviousValue) => PreviousValue + 1)
@@ -28,7 +28,6 @@ console.log("cardData",cardData);
     useEffect(() => {
         setTimeout(() => {
             axios.get(`https://randomuser.me/api/?page=${pageNo}&results=5&seed=abc`).then((response) => {
-                console.log("Response", response.data.results)
                 setCardData((PreviousValue) => {
                     return [...PreviousValue, ...response.data.results]
                 })
@@ -45,7 +44,7 @@ console.log("cardData",cardData);
 
     return (
         <div className="homeContainer">
-            {cardData.length > 0 ? cardData.map((value, index) => {
+            {cardData.length > 0 ? cardData.map((value) => {
                 return <DisplayCard key={value.cell} cardValue={value} />
             }) : <>
                 <MainSkeleton />

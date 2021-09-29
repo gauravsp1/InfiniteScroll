@@ -21,7 +21,6 @@ function App() {
         <Route exact path="/" component={() => <SignUp setAuthentication={setAuthentication} />} />
         <Route exact path="/login" component={() => <Login setAuthentication={setAuthentication} />} />
         <ProtectedRoute authentication={authentication} exact path="/home" component={Home} />
-
       </Switch>
     </div>
   );
